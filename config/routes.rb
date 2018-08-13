@@ -1,33 +1,12 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/edit'
-  get 'reviews/update'
-  get 'reviews/destroy'
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
-  get 'bookings/index'
-  get 'bookings/show'
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'bookings/edit'
-  get 'bookings/update'
-  get 'bookings/destroy'
-  get 'caves/index'
-  get 'caves/show'
-  get 'caves/new'
-  get 'caves/create'
-  get 'caves/edit'
-  get 'caves/update'
-  get 'caves/destroy'
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # resources :users
+
+  resources :caves do 
+    resources :bookings, only: [ :new, :create]
+  end
+  resources :bookings, except: [ :new, :create]
+
 end

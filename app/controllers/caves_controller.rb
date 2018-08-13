@@ -1,5 +1,5 @@
 class CavesController < ApplicationController
-  before_action :cave, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_cave, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @caves =  Cave.all

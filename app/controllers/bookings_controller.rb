@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_cave, except: [ :index, :destroy ]
+  before_action :set_cave, except: [ :index, :destroy, :show ]
 
   def index
     @bookings =  Booking.all
@@ -9,6 +9,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    set_booking
+    @cave = @booking.cave
   end
 
   def new

@@ -1,12 +1,107 @@
-<!--not actual routes. Only place holders -->
-
-<h1><%= @cave.name %><h1>
-<div>
-
-  <img/>
-  <h3><%= @cave.price %></h3>
-  <p><%=  @cave.rating%></p>
-  <p><%=  @cave.availablilty%></p>
-   <ul><li><%=  @cave.amenities %></li></ul>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url('<%= @cave.photo %>'); height: 50vh; background-position: center;">
 </div>
-<%= link_to "back", caves_path %>
+
+<div class="header-cave">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+        <div class="header-cave-details">
+          <div class="header-cave-owner  text-center">
+            <img src="https://kitt.lewagon.com/placeholder/users/stephlaf" class="img-circle" width="80" alt="<%= @cave.user.email %> TODO add names to user table" />
+            <p><%= @cave.user.email %> [TODO: ADD NAMES TO USER TABLE]</p>
+          </div>
+          <div class="header-cave-name">
+            <h1><%= @cave.name %></h1>
+            <p><%= @cave.address %>[TO DO: ADD ADDRESS TO CAVES]</p>
+            <p class="rating">
+              <% @rating = @cave.rating.to_i %>
+              <% @rating.times do %>
+                <i class="fa fa-star"></i>
+              <% end %>
+              <%  if @rating < 5
+                meh_num = 5 - @rating
+                meh_num.times do
+                %>
+                  <i class="fa fa-star meh"></i>
+                <% end %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <form action="#" >
+          <h4>Book this cave</h3>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-6">
+                <input type="text" class="form-control" placeholder="<%= Date.today.strftime("%m/%d/%Y") %>" id="checkin">
+              </div>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" placeholder="<%= (Date.today + 3).strftime("%m/%d/%Y") %>">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <select name="" id="guests" class="form-control">
+              <option value="1">1 guest</option>
+              <option value="2">2 guests</option>
+              <option value="3">3 guests</option>
+            </select>
+          </div>
+          <input type="submit" class="btn btn-brown" value="Book it" style="width: 100%">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cave-description">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <h2>About this cave</h2>
+        <p><%= @cave.description %></p>
+
+        <hr>
+        <div class="row" id="cave-data">
+          <div class="col-xs-12 col-sm-2">
+            The Space
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul class="list-unstyled">
+              <li>Accommodates:  <strong>2</strong></li>
+              <li>Pits:  <strong>1</strong></li>
+              <li>Bed type:  <strong>Rock Slab</strong></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul class="list-unstyled">
+              <li>Beds: <strong>1</strong></li>
+              <li>Cave type: <strong>Mudhole</strong></li>
+              <li>Pit type: <strong>Open</strong></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div class="row" id="cave-data">
+          <div class="col-xs-12 col-sm-2">
+            Amenities
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul class="list-unstyled">
+              <li><i class="fas fa-sun"></i><strong>Solar Lighting</strong></li>
+              <li><i class="fa fa-wifi"></i><strong>Wifi</strong></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ul class="list-unstyled">
+              <li><i class="fa fa-poo"></i><strong>Covered Pit</strong></li>
+              <li><i class="fa fa-utensil-spoon"></i><strong>Club</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+/* Your button CSS code here */
+.btn-green {
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #404f24;
+  transition: background 0.5s ease;
+
+}
+.btn-green:hover {
+  opacity: 1;
+  background: transparent;
+  border: 1px solid #404f24;
+  text-decoration: none;
+  color: #404f24;
+}
+
+.btn-brown {
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #613318;
+  transition: background 0.5s ease;
+
+}
+.btn-brown:hover {
+  opacity: 1;
+  background: transparent;
+  border: 1px solid #613318;
+  text-decoration: none;
+  color: #613318;
+}
+
+.btn-orange {
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #d57500;
+  transition: background 0.5s ease;
+
+}
+.btn-orange:hover {
+  opacity: 1;
+  background: transparent;
+  border: 1px solid #d57500;
+  text-decoration: none;
+  color: #d57500;
+}

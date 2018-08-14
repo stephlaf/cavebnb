@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_182103) do
+ActiveRecord::Schema.define(version: 2018_08_14_191337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.date "checkin"
@@ -25,6 +33,15 @@ ActiveRecord::Schema.define(version: 2018_08_14_182103) do
     t.datetime "updated_at", null: false
     t.index ["cave_id"], name: "index_bookings_on_cave_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "cave_amenities", force: :cascade do |t|
+    t.bigint "cave_id"
+    t.bigint "amenity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id"], name: "index_cave_amenities_on_amenity_id"
+    t.index ["cave_id"], name: "index_cave_amenities_on_cave_id"
   end
 
   create_table "caves", force: :cascade do |t|
@@ -60,5 +77,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_182103) do
 
   add_foreign_key "bookings", "caves"
   add_foreign_key "bookings", "users"
+  add_foreign_key "cave_amenities", "amenities"
+  add_foreign_key "cave_amenities", "caves"
   add_foreign_key "caves", "users"
 end

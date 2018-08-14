@@ -1,2 +1,27 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>Your Bookings (as Renter) </h1>
+<!--renter -->
+  <% @sent_bookings.each do |booking| %>
+    <div>
+      <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
+      <p><%= booking.cave.name %></p>
+      <span><%= link_to 'Get Details', booking_path(booking), class: 'btn btn-info' %></span>
+    <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+      <span><%= link_to 'Delete', booking_path(booking), class: 'btn btn-danger',  method: :delete,
+                             data: { confirm: 'Are you sure?' } %></span>
+    </div>
+  <% end %>
+
+<!-- owner -->
+
+<h1>Your Bookings (as Owner)</h1>
+<% @received_bookings.each do |booking| %>
+  <div>
+    <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
+    <p><%= booking.cave.name %></p>
+    <span><%= link_to 'Get Details', booking_path(booking), class: 'btn btn-info' %></span>
+  <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+    <span><%= link_to 'Delete', booking_path(booking), class: 'btn btn-danger',  method: :delete,
+                           data: { confirm: 'Are you sure?' } %></span>
+  </div>
+<% end %>
+

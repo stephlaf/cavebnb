@@ -1,2 +1,12 @@
-<h1>Caves#show</h1>
-<p>Find me in app/views/caves/show.html.erb</p>
+<!--not actual routes. Only place holders -->
+
+<h1><%= @cave.name %><h1>
+<div>
+
+  <img/>
+  <h3><%= @cave.price %></h3>
+  <p><%=  @cave.rating%></p>
+  <p><%=  @cave.availablilty%></p>
+   <ul><li><%=  @cave.amenities %></li></ul>
+</div>
+<%= link_to "back", caves_path %>

@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings =  Booking.all
+    @sent_bookings = Booking.where(user_id: current_user.id)
+    @received_bookings = Booking.joins(:cave).where(caves: { user_id: current_user.id })
   end
 
   def show

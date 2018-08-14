@@ -7,7 +7,7 @@
 }
 #cave-description h2{
     font-size:18px;
-    color: red;
+    color: brown;
 }
 #cave-data{
     font-weight:normal;
@@ -29,7 +29,7 @@
     margin-bottom:3px
 }
 .header-cave{
-    border:1px solid #dce0e0
+    border:1px solid #dce0e0;
 }
 .header-cave-details{
     display:flex;
@@ -46,14 +46,14 @@
     font-size:20px;
     font-weight:600;
     margin-top: 0;
-    color: red;
+    color: brown;
 
 }
 
 .header-cave h4{
     font-size:18px;
     font-weight: bold;
-    color: red;
+    color: brown;
     margin-top:0
 }
 
@@ -63,7 +63,9 @@
 .header-cave form{
     margin:20px 0;
     margin-right:0;
-    background:#F4F4F4;
+    background: orange;
     padding:15px;
-    border-radius:3px
+    border-radius:12px;
+    border:1px solid brown;
+
 }

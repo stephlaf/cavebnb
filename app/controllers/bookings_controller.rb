@@ -1,12 +1,16 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_cave, except: [ :destroy ]
+  before_action :set_cave, except: [ :index, :destroy, :show ]
 
   def index
     @bookings =  Booking.all
+    @sent_bookings = Booking.where(user_id: current_user.id)
+    @received_bookings = Booking.joins(:cave).where(caves: { user_id: current_user.id })
   end
 
   def show
+    set_booking
+    @cave = @booking.cave
   end
 
   def new

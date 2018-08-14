@@ -1,7 +1,7 @@
 <h1>Your Bookings (as Renter) </h1>
 <!--renter -->
   <% @sent_bookings.each do |booking| %>
-    <div>
+    <div display: inline-block>
       <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
       <p><%= booking.cave.name %></p>
       <span><%= link_to 'Get Details', booking_path(booking), class: 'btn btn-info' %></span>

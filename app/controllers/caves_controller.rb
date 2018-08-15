@@ -22,6 +22,10 @@ class CavesController < ApplicationController
     @cave = current_user.owned_caves.new(cave_params)
 
     if @cave.save
+      # temporary code to automatically add some new amenities to the newly created cave
+      Amenity.all.shuffle.take(rand(7)+1).each do |amenity|
+        CaveAmenity.create(cave: @cave, amenity: amenity)
+       end
       redirect_to cave_path(@cave)
     else
       render :new

@@ -10,6 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+        <%= link_to "See Your Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Share Your Cave", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Wanderings", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Smoke Signals", "#", class: "navbar-wagon-item navbar-wagon-link" %>

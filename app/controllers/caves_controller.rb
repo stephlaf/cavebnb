@@ -19,7 +19,7 @@ class CavesController < ApplicationController
   end
 
   def create
-    @cave = Cave.new(cave_params)
+    @cave = current_user.owned_caves.new(cave_params)
 
     if @cave.save
       redirect_to cave_path(@cave)

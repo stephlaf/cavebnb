@@ -1,0 +1,24 @@
+.container-size {
+  
+}
+#row {
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 40px;
+  padding-bottom: 20px;
+  background-color: $brown;
+  h2, h3, label, small{
+    color: $light-gray;
+  }
+  label {
+    font-size: 15px;
+  }
+  input {
+    border-radius: 10px;
+    // height: 32px;
+  }
+}
+.form-control {
+  height: 32px;
+}
+

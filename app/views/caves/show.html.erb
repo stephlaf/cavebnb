@@ -7,22 +7,22 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-cave-details">
           <div class="header-cave-owner  text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/stephlaf" class="img-circle" width="80" alt="<%= @cave.user.email %> TODO add names to user table" />
-            <p><%= @cave.user.email %> [TODO: ADD NAMES TO USER TABLE]</p>
+            <img src="<%= @cave.user.photo %>" class="img-circle" width="80" alt="<%= @cave.user.first_name %> <%= @cave.user.last_name %> />
+            <p><%= @cave.user.first_name %> <%= @cave.user.last_name %></p>
           </div>
           <div class="header-cave-name">
             <h1><%= @cave.name %></h1>
-            <p><%= @cave.address %>[TO DO: ADD ADDRESS TO CAVES]</p>
+            <p><%= @cave.address %></p>
             <p class="rating">
               <% @rating = @cave.rating.to_i %>
               <% @rating.times do %>
-                <i class="fa fa-star"></i>
+                <i class="fa fa-star" style= "color: orange"></i>
               <% end %>
               <%  if @rating < 5
                 meh_num = 5 - @rating
                 meh_num.times do
                 %>
-                  <i class="fa fa-star meh"></i>
+                  <i class="fa fa-star"></i>
                 <% end %>
               <% end %>
             </p>
@@ -70,16 +70,14 @@
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
+              <li>Cave Type:  <strong>Cavern</strong></li>
               <li>Accommodates:  <strong>2</strong></li>
-              <li>Pits:  <strong>1</strong></li>
-              <li>Bed type:  <strong>Rock Slab</strong></li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <li>Beds: <strong>1</strong></li>
-              <li>Cave type: <strong>Mudhole</strong></li>
-              <li>Pit type: <strong>Open</strong></li>
+              <li>Bed type:  <strong>Rock Slab</strong></li>
+              <li>Number of Beds: <strong>1</strong></li>
             </ul>
           </div>
         </div>
@@ -90,14 +88,25 @@
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <li><i class="fas fa-sun"></i><strong>Solar Lighting</strong></li>
-              <li><i class="fa fa-wifi"></i><strong>Wifi</strong></li>
+              <% @amenities_per_column = (@cave.amenities.length / 2.to_f).round %>
+              <% @display_count = 1  %>
+              <% @cave.amenities.each do |amenity| %>
+                <% if (@display_count <= @amenities_per_column) %>
+                  <li><%= amenity.icon.html_safe %> <strong><%= amenity.name %></strong></li>
+                <% end %>
+                <% @display_count += 1 %>
+              <% end %>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <li><i class="fa fa-poo"></i><strong>Covered Pit</strong></li>
-              <li><i class="fa fa-utensil-spoon"></i><strong>Club</strong></li>
+                <% @display_count = 1  %>
+                <% @cave.amenities.each do |amenity| %>
+                <% if (@display_count > @amenities_per_column) %>
+                  <li><%= amenity.icon.html_safe %> <strong><%= amenity.name %></strong></li>
+                <% end %>
+                <% @display_count += 1 %>
+              <% end %>
             </ul>
           </div>
         </div>

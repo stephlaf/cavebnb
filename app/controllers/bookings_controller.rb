@@ -20,11 +20,12 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.cave = @cave
+    @booking.user = current_user
 
     if @booking.save
-      redirect_to cave_path(@cave)
+      redirect_to bookings_path
     else
-      render :new
+      redirect_to cave_path(@cave)
     end
   end
 

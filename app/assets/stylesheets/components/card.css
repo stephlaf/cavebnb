@@ -7,12 +7,15 @@
   flex: 1 1 auto;
   margin: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  background-color: $brown;
   transition: all 0.3s ease;
+  opacity: 0.9;
 }
 
 .card:hover {
-  margin-top: -5px;
+  opacity: 1;
+  
 }
 
 .card-body {
@@ -73,10 +76,10 @@
   width: 100%;
   z-index: 4;
   background: darkblue;
-  opacity: 0;
+  opacity: 0.8;
 }
 .card-filter:hover{
-  opacity: 0.1;
+  opacity: 1;
 }
 
 .card-footer p {
@@ -99,4 +102,9 @@
 .card-footer .links i:hover{
   opacity: 0.4;
   font-size: 110%;
+}
+.card-img-border {
+  margin-top: 18px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(130, 130, 130, 0.5);
 }

@@ -22,13 +22,13 @@ User.destroy_all
 CaveAmenity.destroy_all
 puts "Seeding database..."
 
-User.create(email: "captain@caveman.com", password: "123456")
-User.create(email: "conan@thebarbarian.com", password: "123456")
-User.create(email: "gollum@thepreciouss.net", password: "123456")
-User.create(email: "barney@rubble.com", password: "123456")
-User.create(email: "fred@flintstone.com", password: "123456")
-User.create(email: "balrog@moria.com", password: "123456")
-User.create(email: "smaug@lonelymountain.com", password: "123456")
+User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman")
+User.create(email: "conan@thebarbarian.com", password: "123456", first_name: "Conan", last_name: "Barbarian")
+User.create(email: "gollum@thepreciouss.net", password: "123456", first_name: "Gollum", last_name: "McSmeagol")
+User.create(email: "barney@rubble.com", password: "123456", first_name: "Barney", last_name: "Rubble")
+User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred", last_name: "Flintstone")
+User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom")
+User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon")
 
 Amenity.create(name:"Boulder", description:"Roll some sweet hard rock goodness in front of your cave to seal the entrance against the elements (and dinosaurs)", icon:'<i class="fas fa-meh-rolling-eyes"></i>')
 Amenity.create(name:"Covered Pit", description:"Experience the sweet relief of aromatic freedom, as you close the lid on your, um, excretions.", icon:'<i class="fa fa-poo"></i>')

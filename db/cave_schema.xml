@@ -31,7 +31,7 @@
     <type label="Year" length="0" sql="YEAR" quote=""/>
     <type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
   </group>
-  
+
   <group label="Miscellaneous" color="rgb(200,200,255)">
     <type label="ENUM" length="1" sql="ENUM" quote=""/>
     <type label="SET" length="1" sql="SET" quote=""/>
@@ -86,11 +86,14 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="photo" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="951" y="64" name="booking">
+<table x="894" y="50" name="booking">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -115,7 +118,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="84" y="420" name="amenities">
+<table x="184" y="405" name="amenities">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -143,6 +146,21 @@
 <row name="amenities_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="amenities" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="503" y="426" name="photo">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="url" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="cave_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="caves" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

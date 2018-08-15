@@ -39,7 +39,7 @@ Amenity.create(name:"Drums", description:"Rock out and talk to your fellow nomad
 Amenity.create(name:"Evil Demon", description:"For a more adventurous journey, this cave comes fully infested with horrible monsters for you to slay.", icon:'<i class="fab fa-drupal"></i>')
 Amenity.create(name:"Bathing Pool", description:"This cave is close to a water source for bathing and fishing.", icon:'<i class="fas fa-bath"></i>')
 Amenity.create(name:"Forbidden Fruit", description:"Get some tasty knowledge and vitamin C with this cave's stash of forbidden fruit.", icon:'<i class="fab fa-apple"></i>')
-Amenity.create(name:"Human Sacrifice", description:"For the ultimate in extra support, this cave comes fully furnished with humans to sacrifice.", icon:'fas fa-street-view')
+Amenity.create(name:"Human Sacrifice", description:"For the ultimate in extra support, this cave comes fully furnished with humans to sacrifice.", icon:'<i class="fas fa-street-view"></i>')
 
 Cave.create(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal")
 Cave.create(name: "Captain's Unga Bungalow", user: User.first, description: "Unga bunga!", price: "6", remote_photo_url: 'https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/144/177/177044797.jpg', address: "4692 boul Saint Laurent, Montreal", rating: "3")

@@ -6,4 +6,8 @@ class Cave < ApplicationRecord
   has_many :amenities, through: :cave_amenities
 
   mount_uploader :photo, PhotoUploader
+
+  def self.filter_by_amenity(amenity_id)
+    Cave.joins(:cave_amenities).where(cave_amenities: { amenity_id: amenity_id })
+  end
 end

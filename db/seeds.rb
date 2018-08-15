@@ -37,9 +37,9 @@ Amenity.create(name:"Solar Lighting", description:"Electricity hasn't even been 
 Amenity.create(name:"Spirit Guides", description:"Take a tour of the hunting grounds around this cave, with a local spirit guide.", icon:'<i class="fab fa-studiovinari"></i>')
 Amenity.create(name:"Drums", description:"Rock out and talk to your fellow nomads with some sweet sounding drums.", icon:'<i class="fas fa-drum"></i>')
 Amenity.create(name:"Evil Demon", description:"For a more adventurous journey, this cave comes fully infested with horrible monsters for you to slay.", icon:'<i class="fab fa-drupal"></i>')
-Amenity.create(name:"Flowing Water", description:"This cave is close to a water source for bathing and fishing.", icon:'<i class="fas fa-swimmer"></i>')
+Amenity.create(name:"Bathing Pool", description:"This cave is close to a water source for bathing and fishing.", icon:'<i class="fas fa-bath"></i>')
 Amenity.create(name:"Forbidden Fruit", description:"Get some tasty knowledge and vitamin C with this cave's stash of forbidden fruit.", icon:'<i class="fab fa-apple"></i>')
-Amenity.create(name:"Air Freshener", description:"This cave has an air freshener.", icon:'fas fa-air-freshener')
+Amenity.create(name:"Human Sacrifice", description:"For the ultimate in extra support, this cave comes fully furnished with humans to sacrifice.", icon:'fas fa-street-view')
 
 Cave.create(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal")
 Cave.create(name: "Captain's Unga Bungalow", user: User.first, description: "Unga bunga!", price: "6", remote_photo_url: 'https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/144/177/177044797.jpg', address: "4692 boul Saint Laurent, Montreal", rating: "3")
@@ -89,9 +89,10 @@ Booking.create(cave: Cave.fifth, user: User.second, checkin: "10-10-2018", check
 Booking.create(cave: Cave.all[5], user: User.third, checkin: "10-11-2018", checkout: "11-12-2018", status: "cancelrequested")
 Booking.create(cave: Cave.all[6], user: User.fourth, checkin: "10-11-2018", checkout: "11-12-2018", status: "cancelrequested")
 
-(0..9).each do |n|
-   (0..6).to_a.shuffle.take(rand(7)).each do |x|
-CaveAmenity.create(cave: Cave.all[n], amenity: Amenity.all[x])
+
+Cave.all.each do |cave|
+  Amenity.all.shuffle.take(rand(9)+1).each do |amenity|
+    CaveAmenity.create(cave: cave, amenity: amenity)
   end
 end
 #

@@ -3,12 +3,16 @@
   <% @sent_bookings.each do |booking| %>
     <div display: inline-block>
       <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
-      <p><%= booking.cave.name %></p>
       <span><%= link_to 'Cave Details', cave_path(booking.cave.id), class: 'btn btn-info' %></span>
     <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
       <span><%= link_to 'Delete', booking_path(booking), class: 'btn btn-danger',  method: :delete,
                              data: { confirm: 'Are you sure?' } %></span>
     </div>
+    <div>
+      <h3><%= booking.cave.name %></h3>
+      <p>Check-in date: <%= booking.checkin %></p>
+      <p>Check-out date: <%= booking.checkout %></p>
+     </div>
   <% end %>
 
 <!-- owner -->

@@ -1,4 +1,16 @@
 .container-size {
-  height: calc(100vh - 70px);
-  width: 50vw;
+  
+}
+#row {
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 50px;
+  padding-bottom: 20px;
+  background-color: $brown;
+  h2, label, small{
+    color: $light-gray;
+  }
+  input {
+    border-radius: 10px;
+  }
 }

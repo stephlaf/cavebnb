@@ -30,27 +30,7 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <form action="#" >
-          <h4>Book this cave</h3>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-6">
-                <input type="text" class="form-control" placeholder="<%= Date.today.strftime("%m/%d/%Y") %>" id="checkin">
-              </div>
-              <div class="col-xs-6">
-                <input type="text" class="form-control" placeholder="<%= (Date.today + 3).strftime("%m/%d/%Y") %>">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <select name="" id="guests" class="form-control">
-              <option value="1">1 guest</option>
-              <option value="2">2 guests</option>
-              <option value="3">3 guests</option>
-            </select>
-          </div>
-          <input type="submit" class="btn btn-brown" value="Book it" style="width: 100%">
-        </form>
+        <%= render("shared/form")  %>
       </div>
     </div>
   </div>

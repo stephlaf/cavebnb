@@ -22,13 +22,13 @@ User.destroy_all
 CaveAmenity.destroy_all
 puts "Seeding database..."
 
-User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman")
-User.create(email: "conan@thebarbarian.com", password: "123456", first_name: "Conan", last_name: "Barbarian")
-User.create(email: "gollum@thepreciouss.net", password: "123456", first_name: "Gollum", last_name: "McSmeagol")
-User.create(email: "barney@rubble.com", password: "123456", first_name: "Barney", last_name: "Rubble")
-User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred", last_name: "Flintstone")
-User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom")
-User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon")
+User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman", photo: "https://vignette.wikia.nocookie.net/superheroes/images/c/cd/Captain_Caveman.jpg/revision/latest")
+User.create(email: "conan@thebarbarian.com", password: "123456", first_name: "Conan", last_name: "Barbarian", photo: "https://spiremagazine.com/wp-content/uploads/2017/10/geicocavemen.jpg")
+User.create(email: "gollum@thepreciouss.net", password: "123456", first_name: "Gollum", last_name: "McSmeagol", photo: "https://qph.fs.quoracdn.net/main-qimg-23de0323adbe9dc4918ef80a199820e6.webp")
+User.create(email: "barney@rubble.com", password: "123456", first_name: "Barney", last_name: "Rubble", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIHOcyPXX9_u2MGqlsxu8RionC5Yxw5ULfUwZnj7GUvz-uy3g2Kg")
+User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred", last_name: "Flintstone", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-oLSNa3zsnf9QA3M-4RdaO8-Dae8bNEvYgI7BTzTqA1J6CyrSNA")
+User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKtpAm5goQ2xhxr2exyrWPchu2DeHwPMxjDRO1-pfcIDB8A0r6")
+User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon", photo: "https://pre00.deviantart.net/7864/th/pre/i/2015/029/2/7/the_hobbit__cartoon_digital_smaug_by_alexbee1236-d7s26bp.png")
 
 Amenity.create(name:"Boulder", description:"Roll some sweet hard rock goodness in front of your cave to seal the entrance against the elements (and dinosaurs)", icon:'<i class="fas fa-baseball-ball"></i>')
 Amenity.create(name:"Covered Pit", description:"Experience the sweet relief of aromatic freedom, as you close the lid on your, um, excretions.", icon:'<i class="fa fa-poo"></i>')

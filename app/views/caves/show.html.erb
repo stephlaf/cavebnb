@@ -7,7 +7,7 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-cave-details">
           <div class="header-cave-owner  text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/stephlaf" class="img-circle" width="80" alt="<%= @cave.user.email %> TODO add names to user table" />
+            <img src="<%= @cave.user.photo %>" class="img-circle" width="80" alt="<%= @cave.user.first_name %> <%= @cave.user.last_name %> />
             <p><%= @cave.user.first_name %> <%= @cave.user.last_name %></p>
           </div>
           <div class="header-cave-name">
@@ -88,7 +88,7 @@
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <% @amenities_per_column = (@cave.amenities.length / 2) %>
+              <% @amenities_per_column = (@cave.amenities.length / 2.to_f).round %>
               <% @display_count = 1  %>
               <% @cave.amenities.each do |amenity| %>
                 <% if (@display_count <= @amenities_per_column) %>

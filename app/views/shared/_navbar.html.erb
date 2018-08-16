@@ -8,6 +8,12 @@
     <%= link_to "CaveBnB", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
   </div>
 
+  <form action="/caves">
+    <input type="text" name='query' class="search-style">
+    <input type="submit" value="hunt!" class="btn btn-warning">
+  </form>
+
+
 
 
   <!-- Right Navigation -->
@@ -18,7 +24,7 @@
       <!-- Links when logged in -->
       <%= link_to "Share Your Cave", new_cave_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Wanderings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Smoke Signals", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Smoke Signals", conversations_path , class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

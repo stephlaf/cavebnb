@@ -24,14 +24,14 @@ CaveType.destroy_all
 BedType.destroy_all
 puts "Seeding database..."
 
-User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman", photo: "https://vignette.wikia.nocookie.net/superheroes/images/c/cd/Captain_Caveman.jpg/revision/latest")
-User.create(email: "conan@thebarbarian.com", password: "123456", first_name: "Conan", last_name: "Barbarian", photo: "https://spiremagazine.com/wp-content/uploads/2017/10/geicocavemen.jpg")
-User.create(email: "gollum@thepreciouss.net", password: "123456", first_name: "Gollum", last_name: "McSmeagol", photo: "https://qph.fs.quoracdn.net/main-qimg-23de0323adbe9dc4918ef80a199820e6.webp")
-User.create(email: "barney@rubble.com", password: "123456", first_name: "Barney", last_name: "Rubble", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIHOcyPXX9_u2MGqlsxu8RionC5Yxw5ULfUwZnj7GUvz-uy3g2Kg")
-User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred", last_name: "Flintstone", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-oLSNa3zsnf9QA3M-4RdaO8-Dae8bNEvYgI7BTzTqA1J6CyrSNA")
-User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKtpAm5goQ2xhxr2exyrWPchu2DeHwPMxjDRO1-pfcIDB8A0r6")
-User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon", photo: "https://pre00.deviantart.net/7864/th/pre/i/2015/029/2/7/the_hobbit__cartoon_digital_smaug_by_alexbee1236-d7s26bp.png")
-User.create(email: "grug@grug.com", password: "gruggrug", first_name: "Grug", last_name: "Brady", photo: "https://i.ytimg.com/vi/M0E0QtwVz60/maxresdefault.jpg")
+User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman", remote_photo_url: "https://vignette.wikia.nocookie.net/superheroes/images/c/cd/Captain_Caveman.jpg/revision/latest")
+User.create(email: "conan@thebarbarian.com", password: "123456", first_name: "Conan", last_name: "Barbarian", remote_photo_url: "https://spiremagazine.com/wp-content/uploads/2017/10/geicocavemen.jpg")
+User.create(email: "gollum@thepreciouss.net", password: "123456", first_name: "Gollum", last_name: "McSmeagol", remote_photo_url: "https://qph.fs.quoracdn.net/main-qimg-23de0323adbe9dc4918ef80a199820e6.webp")
+User.create(email: "barney@rubble.com", password: "123456", first_name: "Barney", last_name: "Rubble", remote_photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIHOcyPXX9_u2MGqlsxu8RionC5Yxw5ULfUwZnj7GUvz-uy3g2Kg")
+User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred", last_name: "Flintstone", remote_photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-oLSNa3zsnf9QA3M-4RdaO8-Dae8bNEvYgI7BTzTqA1J6CyrSNA")
+User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom", remote_photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKtpAm5goQ2xhxr2exyrWPchu2DeHwPMxjDRO1-pfcIDB8A0r6")
+User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon", remote_photo_url: "https://pre00.deviantart.net/7864/th/pre/i/2015/029/2/7/the_hobbit__cartoon_digital_smaug_by_alexbee1236-d7s26bp.png")
+User.create(email: "grug@grug.com", password: "gruggrug", first_name: "Grug", last_name: "Brady", remote_photo_url: "https://i.ytimg.com/vi/M0E0QtwVz60/maxresdefault.jpg")
 
 Amenity.create(name:"Boulder", description:"Roll some sweet hard rock goodness in front of your cave to seal the entrance against the elements (and dinosaurs)", icon:'<i class="fas fa-baseball-ball"></i>')
 Amenity.create(name:"Covered Pit", description:"Experience the sweet relief of aromatic freedom, as you close the lid on your, um, excretions.", icon:'<i class="fa fa-poo"></i>')
@@ -63,7 +63,7 @@ CaveType.create(name: "Hole In Wall")
 CaveType.create(name: "Dragon Lair")
 CaveType.create(name: "Jungle")
 
-Cave.create(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+Cave.create(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal", rating: "2", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
 Cave.create(name: "Captain's Unga Bungalow", user: User.first, description: "Unga bunga!", price: "6", remote_photo_url: 'https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/144/177/177044797.jpg', address: "4692 boul Saint Laurent, Montreal", rating: "3", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
 Cave.create(name: "Cimmerian Spice", user: User.second, description: "What is best in life? To crush your enemies, to see them driven before you, and to hear the lamentations of whoever you beat to this cave.", price: "5", remote_photo_url: 'https://www.asiatouradvisor.com/wp-content/uploads/2017/11/8-most-attractive-caves-visitors-can-explore-in-Quang-Binh4.jpg', address: "82 rue villeneuve, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
 Cave.create(name: "Smaug's Lair", user: User.all[6], description: "My armour is like tenfold shields, my teeth are swords, my claws spears, the shock of my tail is a thunderbolt, my wings a hurricane, and my breath death! But despite all that, my cave is very welcoming. Especially if you're into gold and mithril and weapons and stuff.", price: "15", remote_photo_url: 'https://blenderartists.org/uploads/default/original/4X/d/0/f/d0fddfdb03c74e9d43098418ca4f0fc3f0d6630d.jpg', address: "74 Avenue Fairmount O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)

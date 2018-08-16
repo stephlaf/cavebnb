@@ -10,6 +10,7 @@
   justify-content: space-between;
   position: fixed;
   width: 100vw;
+  top: 0;
 }
 
 /* Logo */
@@ -19,8 +20,8 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
 }
 
@@ -40,7 +41,7 @@
 /* Navbar link */
 .navbar-wagon-link {
   color: #616668;
-  font-size: 14px;
+  font-size: 17px;
 }
 .navbar-wagon-link:hover {
   color: #da552f;

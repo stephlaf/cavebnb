@@ -1,0 +1,23 @@
+.bookings {
+  color: white;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 5px 4px 20px rgba(125, 125, 125, 0.3);
+  }
+  p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 50px;
+  }
+  .b {
+    margin-top: 20px;
+  }
+}

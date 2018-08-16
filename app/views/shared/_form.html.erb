@@ -1,7 +1,8 @@
+
 <%= simple_form_for([@cave, Booking.new]) do |f| %>
-   <h4>Book this cave</h3>
+   <h4>Book this cave</h4>
    <%= f.input :checkin, as: :date, html5: true %>
    <%= f.input :checkout, as: :date, html5: true %>
-   <%= f.submit %>
-<% end %>
+   <%= f.submit :class => "btn btn-brown" %>
+ <% end %>
 

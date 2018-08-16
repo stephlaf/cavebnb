@@ -11,9 +11,12 @@
   position: fixed;
   width: 100vw;
   top: 0;
-  input {
-    color: white;
-  }
+  z-index: 3;
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 3pt 2pt $orange;
+    border: none;
+}
 }
 .btn-warning {
   transition: background 0.5s ease;

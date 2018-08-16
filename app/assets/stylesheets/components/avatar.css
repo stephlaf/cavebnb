@@ -4,3 +4,10 @@ img.avatar {
   height: 50px;
   border-radius: 50%;
 }
+
+img.avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid;
+}

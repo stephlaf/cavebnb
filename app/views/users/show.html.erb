@@ -4,7 +4,9 @@
         <h1><%= "Hi, I'm" + " " + @user.first_name + " " + @user.last_name %></h1>
         <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
         <h2><%= "Joined in 10,000 B.C."%></h2>
-        <%= link_to "Back to all caves", root_path %>
+          <div class="return">
+            <%= link_to "Back to all caves", root_path %>
+          </div>
       </div>
   </div>
 

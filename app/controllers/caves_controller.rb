@@ -12,6 +12,7 @@ class CavesController < ApplicationController
   # end
 
   def show
+    @review = Review.new
   end
 
   def new
@@ -28,7 +29,7 @@ class CavesController < ApplicationController
        end
       redirect_to cave_path(@cave)
     else
-      render :new
+      render :show
     end
   end
 

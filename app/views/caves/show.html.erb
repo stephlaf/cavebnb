@@ -97,4 +97,27 @@
       </div>
     </div>
   </div>
+  <%= form_for([@cave, @review]) do |f| %>
+
+    <div id="user_stars"></div>
+
+    <div class="form-group">
+      <%= f.text_area :comment, rows: 3, class: "form-control" %>
+    </div>
+
+
+    <div class="actions">
+      <%# f.text_area :stars %>
+      <%= f.submit "Create Review", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+<script>
+  $('#user_stars').raty({
+    path: '/assets',
+    scoreName: 'review[star]',
+    score: 1
+  });
+</script>
 </div>

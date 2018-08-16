@@ -16,13 +16,15 @@
                   <p>other person pic</p>
                   <%# image_tag avatar_url(other), class: "img-circle avatar-medium" %>
                 </div>
-                <div class="col-md-2">
-                  <%= other.first_name %><br>
-                  <%= conversation.messages.last.message_time %>
-                </div>
-                <div class="col-md-8">
-                  <%= conversation.messages.last.content %>
-                </div>
+                <% if conversation.messages.any? %>
+                  <div class="col-md-2">
+                    <%= other.first_name %><br>
+                    <%= conversation.messages.last.message_time %>
+                  </div>
+                  <div class="col-md-8">
+                    <%= conversation.messages.last.content %>
+                  </div>
+                <% end %>
               </div>
 
             <% end %>

@@ -4,6 +4,8 @@ class Cave < ApplicationRecord
   has_many :users, through: :bookings
   has_many :cave_amenities, dependent: :destroy
   has_many :amenities, through: :cave_amenities
+  belongs_to :bed_type
+  belongs_to :cave_type
 
   mount_uploader :photo, PhotoUploader
 

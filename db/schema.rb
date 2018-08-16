@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_175625) do
+
+ActiveRecord::Schema.define(version: 2018_08_16_162144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +20,12 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
     t.string "name"
     t.string "description"
     t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bed_types", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +51,12 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
     t.index ["cave_id"], name: "index_cave_amenities_on_cave_id"
   end
 
+  create_table "cave_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "caves", force: :cascade do |t|
     t.string "address"
     t.string "rating"
@@ -55,8 +68,15 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "description"
+    t.bigint "cave_type_id"
+    t.bigint "bed_type_id"
+    t.integer "accommodates"
+    t.integer "number_of_beds"
+    t.index ["bed_type_id"], name: "index_caves_on_bed_type_id"
+    t.index ["cave_type_id"], name: "index_caves_on_cave_type_id"
     t.index ["user_id"], name: "index_caves_on_user_id"
   end
+
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
@@ -65,6 +85,22 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -102,7 +138,11 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
   add_foreign_key "bookings", "users"
   add_foreign_key "cave_amenities", "amenities"
   add_foreign_key "cave_amenities", "caves"
+  add_foreign_key "caves", "bed_types"
+  add_foreign_key "caves", "cave_types"
   add_foreign_key "caves", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "reviews", "caves"
   add_foreign_key "reviews", "users"
 end

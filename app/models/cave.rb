@@ -14,4 +14,15 @@ class Cave < ApplicationRecord
   include PgSearch
   multisearchable :against => [:name, :rating, :price, :availability, :description]
 
+
+  pg_search_scope :global_search,
+    against: [:name, :rating, :price, :availability, :description],
+    associated_against: {
+      amenities: [ :name, :icon, :description ],
+      bookings: [ :checkin, :checkout, :status ],
+      # reviews: [ :comment, :stars ],
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

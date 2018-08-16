@@ -23,6 +23,7 @@
     width:20px;
     text-align:center
 }
+
 #cave-data li{
     display:flex;
     align-items:center;
@@ -58,8 +59,14 @@
 }
 
 .header-cave-owner{
-    padding:20px
+    padding: 10px;
 }
+
+.header-cave-owner p{
+    font-weight:bold;
+    font-size:14px;
+}
+
 .header-cave form{
     margin:20px 0;
     margin-right:0;

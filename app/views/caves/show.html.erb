@@ -52,14 +52,14 @@
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <li>Cave Type:  <strong>Cavern</strong></li>
-              <li>Accommodates:  <strong>2</strong></li>
+              <li>Cave Type:  <strong><%= @cave.cave_type.name %></strong></li>
+              <li>Accommodates:  <strong><%= @cave.accommodates %></strong></li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-4">
             <ul class="list-unstyled">
-              <li>Bed type:  <strong>Rock Slab</strong></li>
-              <li>Number of Beds: <strong>1</strong></li>
+              <li>Bed type:  <strong><%= @cave.bed_type.name %></strong></li>
+              <li>Number of Beds: <strong><%= @cave.number_of_beds %></strong></li>
             </ul>
           </div>
         </div>

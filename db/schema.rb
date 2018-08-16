@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 2018_08_16_165824) do
     t.index ["user_id"], name: "index_caves_on_user_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "url"
+    t.string "alt"
+    t.bigint "cave_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cave_id"], name: "index_photos_on_cave_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,6 +123,7 @@ ActiveRecord::Schema.define(version: 2018_08_16_165824) do
   add_foreign_key "caves", "bed_types"
   add_foreign_key "caves", "cave_types"
   add_foreign_key "caves", "users"
+  add_foreign_key "photos", "caves"
   add_foreign_key "reviews", "caves"
   add_foreign_key "reviews", "users"
 end

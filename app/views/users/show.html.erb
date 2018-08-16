@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+        <h1><%= "Hi, I'm" + " " + @user.first_name + " " + @user.last_name %></h1>
+        <%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+        <h2><%= "Joined in 10,000 B.C."%></h2>
+        <%= link_to "Back to all caves", root_path %>
+      </div>
+  </div>
+
+
+

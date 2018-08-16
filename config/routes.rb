@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :caves do
     resources :bookings, only: [ :new, :create]
   end
-  resources :bookings, except: [ :new, :create]
 
+  resources :bookings, except: [ :new, :create]
+  resources :users, only: [:show]
 end

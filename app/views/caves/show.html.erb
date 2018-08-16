@@ -7,16 +7,18 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-cave-details">
           <div class="header-cave-owner  text-center">
-            <img src="<%= @cave.user.photo %>" class="img-circle" width="80" alt="<%= @cave.user.first_name %> <%= @cave.user.last_name %> />
-            <p><%= @cave.user.first_name %> <%= @cave.user.last_name %></p>
+            <% if @cave.user.photo %>
+              <img src="<%= @cave.user.photo %>" class="avatar-large" alt="<%= @cave.user.first_name %> <%= @cave.user.last_name %>" />
+            <% end %>
+            <p class="header-cave-owner"><%= @cave.user.first_name %> <%= @cave.user.last_name %></p>
           </div>
           <div class="header-cave-name">
             <h1><%= @cave.name %></h1>
-            <p><%= @cave.address %></p>
-            <p class="rating">
-              <% @rating = @cave.rating.to_i %>
+            <p class="cave-data"><i><%= @cave.address %></i></p>
+            <p class="cave-data"><%= @cave.price %> rocks per night</p>
+            <p class="rating"><% @rating = @cave.rating.to_i %>
               <% @rating.times do %>
-                <i class="fa fa-star" style= "color: orange"></i>
+                <i class="fa fa-star" style= "color: orange;"></i>
               <% end %>
               <%  if @rating < 5
                 meh_num = 5 - @rating

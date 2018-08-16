@@ -17,5 +17,27 @@
 }
 .form-control {
   height: 32px;
+  border-radius: 10px;
 }
+
+.input-group-btn:last-child > .btn {
+  border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    padding: 2.5px;
+    /* border-top-right-radius: 15px; */
+    border: 0 25px 25px 0;
+}
+
+.file-upload {
+  border-radius: 10px;
+}
+
+.file {
+  border-radius: 10px;
+}
+
+.optional {
+  border-radius: 10px;
+}
+
 

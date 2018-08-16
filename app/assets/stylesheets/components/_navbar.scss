@@ -11,6 +11,24 @@
   position: fixed;
   width: 100vw;
   top: 0;
+  input {
+    color: white;
+  }
+}
+.btn-warning {
+  transition: background 0.5s ease;
+}
+.search-style {
+  border-radius: 10px;
+  border: 1px solid rgba(80, 80, 80, 0.4);
+}
+
+.btn-warning:hover {
+  opacity: 1;
+  background: transparent;
+  border: 1px solid #d57500;
+  text-decoration: none;
+  color: #d57500;
 }
 
 /* Logo */

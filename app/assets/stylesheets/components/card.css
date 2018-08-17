@@ -36,7 +36,7 @@
 
 .card .avatar-bottom {
   position: absolute;
-  right: 6px;
+  right: 4px;
   bottom: 15px;
 }
 
@@ -57,12 +57,14 @@
   left: 10px;
 }
 
-.card-description h2 {
+.card-body h2 {
   font-size: 20px;
   margin-bottom: 0px;
   font-weight: bold;
+  line-height: 0.7;
 }
-.card-description p {
+
+.card-body p {
   font-size: 14px;
   font-weight: lighter;
   opacity: 0.9;

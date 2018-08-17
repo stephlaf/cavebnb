@@ -4,6 +4,7 @@ puts "Cleaning database..."
 Booking.destroy_all
 Cave.destroy_all
 Amenity.destroy_all
+Message.destroy_all
 User.destroy_all
 CaveAmenity.destroy_all
 CaveType.destroy_all
@@ -18,6 +19,7 @@ User.create(email: "fred@flintstone.com", password: "123456", first_name: "Fred"
 User.create(email: "balrog@moria.com", password: "123456", first_name: "Balrog", last_name: "of Doom", remote_photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKtpAm5goQ2xhxr2exyrWPchu2DeHwPMxjDRO1-pfcIDB8A0r6")
 User.create(email: "smaug@lonelymountain.com", password: "123456", first_name: "Smaug", last_name: "Le Dragon", remote_photo_url: "https://pre00.deviantart.net/7864/th/pre/i/2015/029/2/7/the_hobbit__cartoon_digital_smaug_by_alexbee1236-d7s26bp.png")
 User.create(email: "grug@grug.com", password: "gruggrug", first_name: "Grug", last_name: "Brady", remote_photo_url: "https://i.ytimg.com/vi/M0E0QtwVz60/maxresdefault.jpg")
+User.create(email: "arr@rrn.com", password: "gruggrug", first_name: "Arr", last_name: "Rrn", remote_photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-oLSNa3zsnf9QA3M-4RdaO8-Dae8bNEvYgI7BTzTqA1J6CyrSNA")
 
 Amenity.create(name:"Boulder", description:"Roll some sweet hard rock goodness in front of your cave to seal the entrance against the elements (and dinosaurs)", icon:'<i class="fas fa-baseball-ball"></i>')
 Amenity.create(name:"Covered Pit", description:"Experience the sweet relief of aromatic freedom, as you close the lid on your, um, excretions.", icon:'<i class="fa fa-poo"></i>')
@@ -108,6 +110,11 @@ Booking.create(cave: Cave.fifth, user: User.second, checkin: "10-10-2018", check
 Booking.create(cave: Cave.all[5], user: User.third, checkin: "10-11-2018", checkout: "11-12-2018", status: "cancelrequested")
 Booking.create(cave: Cave.all[6], user: User.fourth, checkin: "10-11-2018", checkout: "11-12-2018", status: "cancelrequested")
 
+Booking.create(cave: Cave.all[7], user: User.all[1], checkin: "20-10-2018", checkout: "23-11-2018", status: "accepted")
+Booking.create(cave: Cave.all[7], user: User.all[2], checkin: "25-10-2018", checkout: "28-10-2018", status: "proposed")
+Booking.create(cave: Cave.all[7], user: User.all[3], checkin: "20-10-2018", checkout: "11-11-2018", status: "proposed")
+Booking.create(cave: Cave.all[7], user: User.all[4], checkin: "20-11-2018", checkout: "21-11-2018", status: "cancelrequested")
+Booking.create(cave: Cave.all[7], user: User.all[5], checkin: "20-11-2018", checkout: "21-11-2018", status: "rejected")
 
 
 

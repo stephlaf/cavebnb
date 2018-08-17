@@ -6,13 +6,15 @@ class CavesController < ApplicationController
     # raise
     if params[:query].present?
       @caves = Cave.global_search(params[:query])
-      # raise
-      unless @caves == []
-        render :search
-      end
     else
       @caves =  Cave.all
     end
+
+    if params[:rating].present?
+      # puts params[:rating]
+      @caves = @caves.where(rating: params[:rating])
+    end
+    # raise
   end
 
   # def top
@@ -23,6 +25,7 @@ class CavesController < ApplicationController
   def show
     # it is not an array of one hash
     @markers = [{lat: @cave.latitude, lng: @cave.longitude}]
+    @review = Review.new
   end
 
   def new
@@ -39,7 +42,7 @@ class CavesController < ApplicationController
        end
       redirect_to cave_path(@cave)
     else
-      render :new
+      render :show
     end
   end
 

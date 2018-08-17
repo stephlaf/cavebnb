@@ -1,51 +1,11 @@
 <%= render 'shared/banner' %>
 
 <div class="container container-size">
-
   <h1 id="index" class="index-h1 text-center">Our Selection of Caves</h1>
 
-    <div class="row">
-        <% @caves.each do |cave| %>
-          <div id="col" class="col-sm-4" >
-            <div class="card">
-              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
-                <h3 class="card-category card-title"><%= cave.name %></h3>
-                <div class="card-description">
-                  <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
-                  <p><% @rating = cave.rating.to_i %>
-                    <% @rating.times do %>
-                      <i class="fa fa-star" style= "color: orange;"></i>
-                    <% end %>
-                    <%  if @rating < 5
-                      meh_num = 5 - @rating
-                      meh_num.times do
-                      %>
-                        <i class="fa fa-star" style="color: grey;"></i>
-                      <% end %>
-                    <% end %>
-                  </p>
-                </div>
-                <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= cave.user.photo %>"></a>
-              </div>
-              <div class="card-footer">
-                <%= link_to 'Explore Cave', cave_path(cave.id), class: 'btn btn-orange' %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-    </div>
-
+      <div class="row" id="js-caves">
+          <% @caves.each do |cave| %>
+            <%= render partial: 'shared/cave_card', locals: {cave: cave} %>
+          <% end %>
+      </div>
 </div>
-
-
-
-
-<!-- <div id="col" class="col-sm-3" >
-            <div class="card">
-              <%# cl_image_tag(cave.photo, width: 200, height: 175, crop: :fill, class: 'card-img-border') %>
-              <div class="cave-card-body card-body">
-                <h3 class="card-title"> <%# cave.name %></h3>
-                <%# link_to 'Visit', cave_path(cave), class: "btn btn-orange btn-sm", id: "bottom-btn" %>
-              </div>
-            </div>
-          </div> -->

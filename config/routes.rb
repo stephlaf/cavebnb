@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :caves do
     resources :bookings, only: [ :new, :create]
+    resources :reviews, only: [:create]
   end
 
 
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
-
+  get "/bookings/:id/accept", to: "bookings#accept", as: "accept_booking"
+  get "/bookings/:id/reject", to: "bookings#reject", as: "reject_booking"
 end

@@ -1,40 +1,252 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <h2 class="text-center">Your Upcoming Invasions</h2>
-      <% @sent_bookings.each do |booking| %>
-        <% cave = booking.cave %>
-        <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= booking.cave.photo %>);">
-            <div class="card-category">
-              <h3 class="card-title"><%= cave.name %></h3>
-              <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
-              <p><% @rating = cave.rating.to_i %>
-                <% @rating.times do %>
-                  <i class="fa fa-star" style= "color: orange;"></i>
-                <% end %>
-                <%  if @rating < 5
-                  meh_num = 5 - @rating
-                  meh_num.times do
-                  %>
-                    <i class="fa fa-star" style="color: grey;"></i>
+      <h2 class="text-center">Your Upcoming Adventures</h2>
+
+      <% if (@upcoming_bookings.count >= 1) %>
+        <h3 class="text-center">Confirmed Journeys</h3>
+        <% @upcoming_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = cave.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= cave.name %></h3>
+                <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+                <p><% @rating = cave.rating.to_i %>
+                  <% @rating.times do %>
+                    <i class="fa fa-star" style= "color: orange;"></i>
                   <% end %>
-                <% end %>
-              </p>
+                  <%  if @rating < 5
+                    meh_num = 5 - @rating
+                    meh_num.times do
+                    %>
+                      <i class="fa fa-star" style="color: grey;"></i>
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+              <div class="card-description">
+                <p>Will invade on <%= booking.checkin.strftime("%A, %B %d") %>!</p>
+                <p>Will flee on <%= booking.checkout.strftime("%A, %B %d") %>.</p>
+              </div>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
             </div>
-            <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= cave.user.photo %>"></a>
+            <div class="card-footer links">
+              <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
+              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will ask #{booking.cave.user.first_name} #{booking.cave.user.last_name} to destroy it." } %>
+            </div>
           </div>
-          <div class="card-footer links">
-            <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
-            <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
-            <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
-            <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will ask #{booking.cave.user.first_name} #{booking.cave.user.last_name} to destroy it." } %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+
+      <% if (@proposed_bookings.count >= 1) %>
+        <h3 class="text-center">Proposed Conquests</h3>
+        <% @proposed_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = cave.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= cave.name %></h3>
+                <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+                <p><% @rating = cave.rating.to_i %>
+                  <% @rating.times do %>
+                    <i class="fa fa-star" style= "color: orange;"></i>
+                  <% end %>
+                  <%  if @rating < 5
+                    meh_num = 5 - @rating
+                    meh_num.times do
+                    %>
+                      <i class="fa fa-star" style="color: grey;"></i>
+                    <% end %>
+                  <% end %>
+                </p>
+              </div>
+              <div class="card-description">
+                <p>Hope to invade on <%= booking.checkin.strftime("%A, %B %d") %>!</p>
+                <p>Would flee on <%= booking.checkout.strftime("%A, %B %d") %>.</p>
+              </div>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
+              <%= link_to 'Demand Answer', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking has not yet been carved in stone, but are you sure you want to destroy it?" } %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if (@cancelling_bookings.count >= 1) %>
+        <h3 class="text-center">Trying To Flee</h3>
+        <% @cancelling_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = cave.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= cave.name %></h3>
+                <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+                <p><% @rating = cave.rating.to_i %>
+                  <% @rating.times do %>
+                    <i class="fa fa-star" style= "color: orange;"></i>
+                  <% end %>
+                  <%  if @rating < 5
+                    meh_num = 5 - @rating
+                    meh_num.times do
+                    %>
+                      <i class="fa fa-star" style="color: grey;"></i>
+                    <% end %>
+                  <% end %>
+                </p>
+                <p>You have asked to abandon this conquest.</p>
+              </div>
+              <div class="card-description">
+                <p>Would invade on <%= booking.checkin.strftime("%A, %B %d") %>!</p>
+                <p>Would flee on <%= booking.checkout.strftime("%A, %B %d") %>.</p>
+              </div>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Resume Mission', accept_booking_path(booking), class: 'btn btn-sm btn-green' %>
+              <%= link_to 'Demand Answer', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if (@rejected_bookings.count >= 1) %>
+        <h3 class="text-center">Hurt Feelings</h3>
+        <% @rejected_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = cave.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= cave.name %></h3>
+                <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+                <p><% @rating = cave.rating.to_i %>
+                  <% @rating.times do %>
+                    <i class="fa fa-star" style= "color: orange;"></i>
+                  <% end %>
+                  <%  if @rating < 5
+                    meh_num = 5 - @rating
+                    meh_num.times do
+                    %>
+                      <i class="fa fa-star" style="color: grey;"></i>
+                    <% end %>
+                  <% end %>
+                </p>
+                <p><%= cave.user.first_name %> reject <%= current_user.first_name %>.</p>
+              </div>
+              <div class="card-description">
+                <p>Wanted invade on <%= booking.checkin.strftime("%A, %B %d") %>.</p>
+                <p>But <%= cave.user.first_name %> not want!</p>
+              </div>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Send Angry Fire', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if (@ancient_bookings.count >= 1) %>
+        <h3 class="text-center">Ancient Conquests</h3>
+        <% @ancient_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = cave.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= cave.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= cave.name %></h3>
+                <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+                <p><% @rating = cave.rating.to_i %>
+                  <% @rating.times do %>
+                    <i class="fa fa-star" style= "color: orange;"></i>
+                  <% end %>
+                  <%  if @rating < 5
+                    meh_num = 5 - @rating
+                    meh_num.times do
+                    %>
+                      <i class="fa fa-star" style="color: grey;"></i>
+                    <% end %>
+                  <% end %>
+                </p>
+                <p><%= current_user.first_name %> invade this cave before!</p>
+              </div>
+              <div class="card-description">
+                <p>Launched invasion on <%= booking.checkin.strftime("%A, %B %d, %Y") %></p>
+                <p>Fled on <%= booking.checkout.strftime("%A, %B %d, %Y") %></p>
+              </div>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
+              <%= link_to 'Mark Cave Wall', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "The record of this booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+
+
      <div class="col-sm-12 col-md-6">
       <h2 class="text-center">Your Impending Hordes (of Renters)</h2>
+
+      <% if (@incoming_bookings.count >= 1) %>
+        <h3 class="text-center">Accepted Hordes</h3>
+        <% @incoming_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = booking.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(<%= user.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
+                <p>Invading <%= cave.name %> (Your <%= cave.cave_type.name %>)</p>
+              </div>
+              <div class="card-description">
+                <p>Will invade on <%= booking.checkin.strftime("%A, %B %d") %>!</p>
+                <p>Will flee on <%= booking.checkout.strftime("%A, %B %d") %>.</p>
+              </div>
+                <a href="/caves/<%= cave.id %>"><img class="avatar" src="<%= cave.photo %>"></a>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+
 
       <% if (@proposed_incoming_bookings.count >= 1) %>
         <h3 class="text-center">Wannabe Barbarians</h3>
@@ -42,7 +254,7 @@
           <% cave = booking.cave %>
           <% user = booking.user %>
           <div class="card">
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= user.photo %>);">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(<%= user.photo %>);">
               <div class="card-category">
                 <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
                 <p>Begs to invade <%= cave.name %> (Your <%= cave.cave_type.name %>)</p>
@@ -51,6 +263,7 @@
                 <p>Would begin incursion on <%= booking.checkin.strftime("%A, %B %d") %></p>
                 <p>Promises to flee on <%= booking.checkout.strftime("%A, %B %d") %></p>
               </div>
+              <a href="/caves/<%= cave.id %>"><img class="avatar" src="<%= cave.photo %>"></a>
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
             <div class="card-footer links">
@@ -69,7 +282,7 @@
           <% cave = booking.cave %>
           <% user = booking.user %>
           <div class="card">
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= user.photo %>);">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(<%= user.photo %>);">
               <div class="card-category">
                 <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
                 <p>Promised to invade <%= cave.name %> (Your <%= cave.cave_type.name %>) . . .</p>
@@ -79,6 +292,7 @@
                 <p>Would launch invasion on <%= booking.checkin.strftime("%A, %B %d") %></p>
                 <p>Would flee on <%= booking.checkout.strftime("%A, %B %d") %></p>
               </div>
+              <a href="/caves/<%= cave.id %>"><img class="avatar" src="<%= cave.photo %>"></a>
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
             <div class="card-footer links">
@@ -91,53 +305,63 @@
         <% end %>
       <% end %>
 
-      <h3 class="text-center">Accepted Hordes</h3>
-      <% @incoming_bookings.each do |booking| %>
-        <% cave = booking.cave %>
-        <% user = booking.user %>
-        <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= user.photo %>);">
-            <div class="card-category">
-              <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
-              <p>Invading <%= cave.name %> (Your <%= cave.cave_type.name %>)</p>
-            </div>
-            <div class="card-description">
-              <p>Will invade on <%= booking.checkin.strftime("%A, %B %d") %>!</p>
-              <p>Will flee on <%= booking.checkout.strftime("%A, %B %d") %>.</p>
-            </div>
+      <% if (@rejected_incoming_bookings.count >= 1) %>
+        <h3 class="text-center">Broken Spirits</h3>
+        <% @rejected_incoming_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = booking.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(<%= user.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
+                <p>Wanted to invade <%= cave.name %> (Your <%= cave.cave_type.name %>) . . .</p>
+                <p>But you crushed his spirits!</p>
+              </div>
+              <div class="card-description">
+                <p>Would have launched invasion on <%= booking.checkin.strftime("%A, %B %d") %></p>
+                <p>Would have fled on <%= booking.checkout.strftime("%A, %B %d") %></p>
+              </div>
+              <a href="/caves/<%= cave.id %>"><img class="avatar" src="<%= cave.photo %>"></a>
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
+            </div>
+            <div class="card-footer links">
+              <%= link_to 'Taunt Enemy', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
+            </div>
           </div>
-          <div class="card-footer links">
-            <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
-            <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
-            <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
 
-      <h3 class="text-center">Broken Spirits</h3>
-      <% @rejected_incoming_bookings.each do |booking| %>
-        <% cave = booking.cave %>
-        <% user = booking.user %>
-        <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= user.photo %>);">
-            <div class="card-category">
-              <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
-              <p>Wanted to invade <%= cave.name %> (Your <%= cave.cave_type.name %>) . . .</p>
-              <p>But you crushed his spirits!</p>
+
+      <% if (@ancient_incoming_bookings.count >= 1) %>
+        <h3 class="text-center">Honored Friends</h3>
+        <% @ancient_incoming_bookings.each do |booking| %>
+          <% cave = booking.cave %>
+          <% user = booking.user %>
+          <div class="card">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(<%= user.photo %>);">
+              <div class="card-category">
+                <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
+                <p>Invaded <%= cave.name %> (Your <%= cave.cave_type.name %>)</p>
+              </div>
+              <div class="card-description">
+                <p>Launched invasion on <%= booking.checkin.strftime("%A, %B %d, %Y") %></p>
+                <p>Fled on <%= booking.checkout.strftime("%A, %B %d, %Y") %></p>
+              </div>
+              <a href="/caves/<%= cave.id %>"><img class="avatar" src="<%= cave.photo %>"></a>
+              <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
-            <div class="card-description">
-              <p>Would have launched invasion on <%= booking.checkin.strftime("%A, %B %d") %></p>
-              <p>Would have fled on <%= booking.checkout.strftime("%A, %B %d") %></p>
+            <div class="card-footer links">
+              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+              <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "The record of this booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
             </div>
           </div>
-          <div class="card-footer links">
-            <%= link_to 'Taunt Enemy', "#", class: 'btn btn-sm btn-orange' %>
-            <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
-            <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+
+
     </div>
   </div>
 </div>

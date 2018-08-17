@@ -65,6 +65,10 @@
   line-height: 0.7;
 }
 
+.card-body a {
+  color: transparent; text-decoration: none;
+}
+
 .card-body p {
   font-size: 14px;
   font-weight: lighter;

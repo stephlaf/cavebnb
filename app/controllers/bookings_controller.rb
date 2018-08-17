@@ -11,6 +11,13 @@ class BookingsController < ApplicationController
     @proposed_incoming_bookings = @received_bookings.where(status: "proposed")
     @rejected_incoming_bookings = @received_bookings.where(status: "rejected")
     @cancelling_incoming_bookings = @received_bookings.where(status: "cancelrequested")
+    @ancient_incoming_bookings = @received_bookings.where(status: "ancient")
+
+    @upcoming_bookings = @sent_bookings.where(status: "accepted")
+    @proposed_bookings = @sent_bookings.where(status: "proposed")
+    @rejected_bookings = @sent_bookings.where(status: "rejected")
+    @cancelling_bookings = @sent_bookings.where(status: "cancelrequested")
+    @ancient_bookings = @sent_bookings.where(status: "ancient")
   end
 
   def show
@@ -49,8 +56,12 @@ class BookingsController < ApplicationController
   def destroy
     @cave = @booking.cave
     if @booking.user == current_user
-      @booking.status = "cancelrequested"
-      @booking.save
+      if @booking.proposed?
+        @booking.destroy
+      else
+        @booking.status = "cancelrequested"
+        @booking.save
+      end
     else
       @booking.destroy
     end

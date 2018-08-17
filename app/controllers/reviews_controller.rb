@@ -6,29 +6,24 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @review = Review.new
   end
 
   def create
-    @review = current_user.reviews.create(review_params)
-    redirect_to @review.cave
+    @cave = Cave.find(params[:cave_id])
+    @review = Review.new(review_params)
+    @review.cave = @cave
+
+    if @review.save
+      redirect_to @review.cave
+    else
+      render :new
+    end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-    @review = Review.find(params[:id])
-    cave = @review.cave
-    @review.destroy
-
-    redirect_to cave
-  end
 
   private
     def review_params
-      params.require(:review).permit(:comment, :star, :cave_id)
+      params.require(:review).permit(:comment, :stars, :cave_id)
 end
 end

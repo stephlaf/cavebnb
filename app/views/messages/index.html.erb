@@ -1,6 +1,6 @@
+<div class="container" style="margin-top: 70px;">
 <div class="row">
-
-  <div class="col-md-3 text-center">
+  <div class="col-xs-8 col-xs-offset-2 text-center">
     <%# image_tag avatar_url(@other), class: "img-circle avatar-medium" %><br>
     <strong><%=@other.first_name
   @other.last_name %></strong>
@@ -15,7 +15,6 @@
  @other.last_name %>
       </div>
       <div class="panel-body">
-        <div class="container">
 
           <%= form_for [@conversation, @conversation.messages.new] do |f| %>
             <div class="form-group">
@@ -32,9 +31,9 @@
       </div>
     </div>
 
-    <div id="chat">
+<!--     <div id="chat">
       <%= render @messages, locals: {conversation: @conversation} %>
-    </div>
+    </div> -->
 
   </div>
 

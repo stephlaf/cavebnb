@@ -1,11 +1,11 @@
-
+<div class="container" style="margin-top: 70px;">
 <div class="row">
   <div class="col-md-12">
 
     <div class="panel panel-default">
       <div class="panel-heading">Your conversations</div>
       <div class="panel-body">
-        <div class="container">
+          <% if @conversations.any? %>
           <% @conversations.each do |conversation| %>
             <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
 
@@ -13,19 +13,22 @@
 
               <div class="row conversation">
                 <div class="col-md-2" >
-                  <p>other person pic</p>
+                  <img src=" <%= conversation.recipient.photo %> " alt="user picture" class="avatar">
                   <%# image_tag avatar_url(other), class: "img-circle avatar-medium" %>
                 </div>
-                <div class="col-md-2">
-                  <%= other.first_name %><br>
-                  <%= conversation.messages.last.message_time %>
-                </div>
-                <div class="col-md-8">
-                  <%= conversation.messages.last.content %>
-                </div>
-              </div>
 
-            <% end %>
+                  <div class="col-md-2">
+                    <%= other.first_name %><br>
+                    <%= conversation.messages.last.message_time %>
+                  </div>
+                  <div class="col-md-8">
+                    <%= conversation.messages.last.content %>
+                  </div>
+                <% end %>
+              </div>
+            <%end %>
+            <% else %>
+            <h3>You have no smoke signals</h3>
           <% end %>
         </div>
       </div>

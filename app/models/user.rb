@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  has_many :messages, dependent: :destroy
   has_many :bookings
   has_many :owned_caves, class_name: 'Cave'
   has_many :booked_caves, through: :bookings, source: :cave

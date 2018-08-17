@@ -13,6 +13,10 @@ class CavesController < ApplicationController
     else
       @caves =  Cave.all
     end
+
+    if params[:rating].present?
+      @caves.where(rating: params[:rating])
+    end
   end
 
   # def top

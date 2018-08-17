@@ -9,13 +9,21 @@ img {
 
 h2 {
   text-align: center;
+  color: #444444;
+  font-family: 'JFRocSol';
 }
 
 h1 {
   text-align: center;
+  color: #444444;
+  font-family: 'JFRocSol';
 }
 
-.return {
+.list-inline {
+  display: inline-block;
+  margin: 0;
+}
+
+.center {
   text-align: center;
-  margin-top: 30px;
 }

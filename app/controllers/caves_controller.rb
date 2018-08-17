@@ -6,13 +6,15 @@ class CavesController < ApplicationController
     # raise
     if params[:query].present?
       @caves = Cave.global_search(params[:query])
-      # raise
-      unless @caves == []
-        render :search
-      end
     else
       @caves =  Cave.all
     end
+
+    if params[:rating].present?
+      # puts params[:rating]
+      @caves = @caves.where(rating: params[:rating])
+    end
+    # raise
   end
 
   # def top

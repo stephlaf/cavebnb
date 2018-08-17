@@ -1,8 +1,14 @@
 #index {
   color: $semi-black;
-  font-family: JFRocSol
+  font-family: JFRocSol;
+  padding-top: 90px;
+  margin-top: -70px;
 }
 
 .container-margin-top {
   margin-top: 20px;
+}
+
+#rating-form {
+  color: $semi-black;
 }

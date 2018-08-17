@@ -2,6 +2,7 @@ require 'progress_bar'
 
 puts "Cleaning database..."
 Booking.destroy_all
+Review.destroy_all
 Cave.destroy_all
 Amenity.destroy_all
 Message.destroy_all

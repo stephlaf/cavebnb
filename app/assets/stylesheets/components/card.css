@@ -60,8 +60,13 @@
 .card-body h2 {
   font-size: 20px;
   margin-bottom: 0px;
+  text-align: left;
   font-weight: bold;
   line-height: 0.7;
+}
+
+.card-body a {
+  color: transparent; text-decoration: none;
 }
 
 .card-body p {

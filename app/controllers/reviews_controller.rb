@@ -13,11 +13,13 @@ class ReviewsController < ApplicationController
     @cave = Cave.find(params[:cave_id])
     @review = Review.new(review_params)
     @review.cave = @cave
+    @review.user = current_user
+
 
     if @review.save
       redirect_to @review.cave
     else
-      render :new
+      redirect_to @cave
     end
   end
 

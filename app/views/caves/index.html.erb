@@ -3,6 +3,17 @@
 <div class="container text-center container-size">
   <!-- <div id="index"></div> -->
   <h1 id="index" class="index-h1">Our Selection of Caves</h1>
+  
+  <form action="/#index" id="rating-form" >
+    <select name="rating_list" form="rating-form">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input type="submit" value="Rating">
+  </form>
 
     <div class="row">
         <% @caves.each do |cave| %>

@@ -11,6 +11,7 @@ gem 'redis'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'pg_search'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -32,6 +33,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'progress_bar'
 end
 
 gem 'redactor-rails', github: 'glyph-fr/redactor-rails'

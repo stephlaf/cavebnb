@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_16_175625) do
+ActiveRecord::Schema.define(version: 2018_08_17_152509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_08_16_175625) do
     t.bigint "bed_type_id"
     t.integer "accommodates"
     t.integer "number_of_beds"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["bed_type_id"], name: "index_caves_on_bed_type_id"
     t.index ["cave_type_id"], name: "index_caves_on_cave_type_id"
     t.index ["user_id"], name: "index_caves_on_user_id"

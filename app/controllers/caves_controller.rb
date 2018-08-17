@@ -1,6 +1,6 @@
 class CavesController < ApplicationController
   before_action :set_cave, only: [ :show, :edit, :update, :destroy ]
-   skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     # raise
@@ -23,6 +23,8 @@ class CavesController < ApplicationController
   # end
 
   def show
+    # it is not an array of one hash
+    @markers = [{lat: @cave.latitude, lng: @cave.longitude}]
     @review = Review.new
   end
 

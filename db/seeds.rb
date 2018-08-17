@@ -1,18 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'progress_bar'
 
 puts "Cleaning database..."
 Booking.destroy_all
@@ -65,14 +51,24 @@ CaveType.create(name: "Hole In Wall")
 CaveType.create(name: "Dragon Lair")
 CaveType.create(name: "Jungle")
 
-Cave.create(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal", rating: "2", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Captain's Unga Bungalow", user: User.first, description: "Unga bunga!", price: "6", remote_photo_url: 'https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/144/177/177044797.jpg', address: "4692 boul Saint Laurent, Montreal", rating: "3", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Cimmerian Spice", user: User.second, description: "What is best in life? To crush your enemies, to see them driven before you, and to hear the lamentations of whoever you beat to this cave.", price: "5", remote_photo_url: 'https://www.asiatouradvisor.com/wp-content/uploads/2017/11/8-most-attractive-caves-visitors-can-explore-in-Quang-Binh4.jpg', address: "82 rue villeneuve, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Smaug's Lair", user: User.all[6], description: "My armour is like tenfold shields, my teeth are swords, my claws spears, the shock of my tail is a thunderbolt, my wings a hurricane, and my breath death! But despite all that, my cave is very welcoming. Especially if you're into gold and mithril and weapons and stuff.", price: "15", remote_photo_url: 'https://blenderartists.org/uploads/default/original/4X/d/0/f/d0fddfdb03c74e9d43098418ca4f0fc3f0d6630d.jpg', address: "74 Avenue Fairmount O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Barney's Bamm-Bamm", user: User.fourth, description: "This is the best cave ever!", price: "12", remote_photo_url: 'https://wonderopolis.org/_img?img=/wp-content/uploads/2013/10/dreamstime_xl_4842587-custom.jpg&transform=resizeCrop,720,450', address: "263 Rue Saint Viateur O, Montreal", rating: "2", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Moria Mine All Mine", user: User.all[5], description: "You shall not pass . . . on this awesome opportunity!", price: "10", remote_photo_url: 'https://static.giantbomb.com/uploads/original/1/17172/1405201-lotr_38.jpg', address: "7030 Boulevard Saint-Michel, Montreal", rating: "5", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "Pebbles Place", user: User.fifth, description: "It's a yabba dabba do time for the whole family.", price: "3", remote_photo_url: 'http://johnkstuff.blogspot.com/uploaded_images/FFbg01house-760911.jpg', address: "267 Rue Saint Zotique O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
-Cave.create(name: "GrugHub", user: User.all[7], description: "There's so much grug here. Push to commit while the grugging is good.", price: "5", remote_photo_url: 'http://999thepoint.com/files/2014/03/RS5198_160550855-scr-300x199.jpg?w=980&q=75', address: "267 Rue Saint Zotique O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create = []
+caves_to_create << Cave.new(name: "Gollum's Preciouss Pad", user: User.third, description: "It's so precious!", price: "4", remote_photo_url: 'https://i.ytimg.com/vi/jcUEaQLZA2c/maxresdefault.jpg', address: "5333 av Casgrain, Montreal", rating: "2", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Captain's Unga Bungalow", user: User.first, description: "Unga bunga!", price: "6", remote_photo_url: 'https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/144/177/177044797.jpg', address: "4692 boul Saint Laurent, Montreal", rating: "3", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Cimmerian Spice", user: User.second, description: "What is best in life? To crush your enemies, to see them driven before you, and to hear the lamentations of whoever you beat to this cave.", price: "5", remote_photo_url: 'https://www.asiatouradvisor.com/wp-content/uploads/2017/11/8-most-attractive-caves-visitors-can-explore-in-Quang-Binh4.jpg', address: "82 rue villeneuve, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Smaug's Lair", user: User.all[6], description: "My armour is like tenfold shields, my teeth are swords, my claws spears, the shock of my tail is a thunderbolt, my wings a hurricane, and my breath death! But despite all that, my cave is very welcoming. Especially if you're into gold and mithril and weapons and stuff.", price: "15", remote_photo_url: 'https://blenderartists.org/uploads/default/original/4X/d/0/f/d0fddfdb03c74e9d43098418ca4f0fc3f0d6630d.jpg', address: "74 Avenue Fairmount O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Barney's Bamm-Bamm", user: User.fourth, description: "This is the best cave ever!", price: "12", remote_photo_url: 'https://wonderopolis.org/_img?img=/wp-content/uploads/2013/10/dreamstime_xl_4842587-custom.jpg&transform=resizeCrop,720,450', address: "263 Rue Saint Viateur O, Montreal", rating: "2", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Moria Mine All Mine", user: User.all[5], description: "You shall not pass . . . on this awesome opportunity!", price: "10", remote_photo_url: 'https://static.giantbomb.com/uploads/original/1/17172/1405201-lotr_38.jpg', address: "7030 Boulevard Saint-Michel, Montreal", rating: "5", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "Pebbles Place", user: User.fifth, description: "It's a yabba dabba do time for the whole family.", price: "3", remote_photo_url: 'http://johnkstuff.blogspot.com/uploaded_images/FFbg01house-760911.jpg', address: "267 Rue Saint Zotique O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+caves_to_create << Cave.new(name: "GrugHub", user: User.all[7], description: "There's so much grug here. Push to commit while the grugging is good.", price: "5", remote_photo_url: 'http://999thepoint.com/files/2014/03/RS5198_160550855-scr-300x199.jpg?w=980&q=75', address: "267 Rue Saint Zotique O, Montreal", rating: "4", accommodates: (rand(9)+1), number_of_beds: rand(3), bed_type: BedType.all.sample, cave_type: CaveType.all.sample)
+
+puts "Creating caves !"
+progressbar = ProgressBar.new(caves_to_create.count)
+caves_to_create.each do |cave|
+  cave.save!
+  progressbar.increment!
+  # for google query limit
+  sleep(1)
+end
 
 Booking.create(cave: Cave.first, user: User.first, checkin: "10-10-2018", checkout: "10-12-2018", status: "proposed")
 Booking.create(cave: Cave.second, user: User.second, checkin: "10-10-2018", checkout: "10-12-2018", status: "proposed")

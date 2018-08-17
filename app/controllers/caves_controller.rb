@@ -42,7 +42,7 @@ class CavesController < ApplicationController
        end
       redirect_to cave_path(@cave)
     else
-      render :show
+      render :new
     end
   end
 

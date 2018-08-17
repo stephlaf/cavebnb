@@ -16,6 +16,7 @@
 
 puts "Cleaning database..."
 Booking.destroy_all
+Review.destroy_all
 Cave.destroy_all
 Amenity.destroy_all
 Message.destroy_all
@@ -23,6 +24,7 @@ User.destroy_all
 CaveAmenity.destroy_all
 CaveType.destroy_all
 BedType.destroy_all
+Conversation.destroy_all
 puts "Seeding database..."
 
 User.create(email: "captain@caveman.com", password: "123456", first_name: "Captain", last_name: "Caveman", remote_photo_url: "https://vignette.wikia.nocookie.net/superheroes/images/c/cd/Captain_Caveman.jpg/revision/latest")
@@ -119,8 +121,6 @@ Booking.create(cave: Cave.all[7], user: User.all[2], checkin: "25-10-2018", chec
 Booking.create(cave: Cave.all[7], user: User.all[3], checkin: "20-10-2018", checkout: "11-11-2018", status: "proposed")
 Booking.create(cave: Cave.all[7], user: User.all[4], checkin: "20-11-2018", checkout: "21-11-2018", status: "cancelrequested")
 Booking.create(cave: Cave.all[7], user: User.all[5], checkin: "20-11-2018", checkout: "21-11-2018", status: "rejected")
-
-
 
 
 

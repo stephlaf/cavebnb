@@ -99,20 +99,26 @@
   </div>
   <%= form_for([@cave, @review]) do |f| %>
 
-    <div id="user_stars"></div>
+    <div id="user_stars"><%= f.number_field :stars, required: true, in: (1..5), rows: 3, class: "form-control" %></div>
 
     <div class="form-group">
-      <%= f.text_area :comment, rows: 3, class: "form-control" %>
+      <%= f.text_area :comment, required: true, rows: 3, class: "form-control" %>
     </div>
 
 
     <div class="actions">
-      <%# f.text_area :stars %>
       <%= f.submit "Create Review", class: "btn btn-primary" %>
     </div>
 
   <% end %>
-
+ <% if @cave.reviews.any? %>
+ <% @cave.reviews.each do |review| %>
+ <div>
+  <p> Rating: <%= review.stars %> stars out of 5 </p>
+  <p><%= review.comment %></p>
+ </div>
+ <% end %>
+ <% end %>
 <script>
   $('#user_stars').raty({
     path: '/assets',

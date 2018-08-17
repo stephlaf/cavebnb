@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 70px;">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <h2 class="text-center">Your Upcoming Adventures</h2>
@@ -34,7 +34,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Send Smoke Signal', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will ask #{booking.cave.user.first_name} #{booking.cave.user.last_name} to destroy it." } %>
             </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Demand Answer', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Demand Answer', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking has not yet been carved in stone, but are you sure you want to destroy it?" } %>
             </div>
@@ -113,7 +113,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Resume Mission', accept_booking_path(booking), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Demand Answer', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Demand Answer', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
             </div>
           </div>
@@ -152,7 +152,7 @@
               <a href="/users/<%= cave.user_id %>"><img class="avatar" src="<%= cave.user.photo %>"></a>
             </div>
             <div class="card-footer links">
-              <%= link_to 'Send Angry Fire', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Send Angry Fire', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete %>
             </div>
           </div>
@@ -192,7 +192,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Mark Cave Wall', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Mark Cave Wall', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "The record of this booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
             </div>
@@ -239,7 +239,7 @@
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
             <div class="card-footer links">
-              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Send Smoke Signal', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
             </div>
@@ -268,7 +268,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Accept', accept_booking_path(booking), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Send Smoke Signal', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Crush Spirits', reject_booking_path(booking), class: 'btn btn-sm btn-red' %>
             </div>
@@ -325,7 +325,7 @@
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
             <div class="card-footer links">
-              <%= link_to 'Taunt Enemy', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Taunt Enemy', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
             </div>
@@ -353,7 +353,7 @@
               <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= user.photo %>"></a>
             </div>
             <div class="card-footer links">
-              <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Send Smoke Signal', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "The record of this booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
             </div>

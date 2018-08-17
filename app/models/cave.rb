@@ -6,6 +6,9 @@ class Cave < ApplicationRecord
   has_many :amenities, through: :cave_amenities
   belongs_to :bed_type
   belongs_to :cave_type
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
 
   mount_uploader :photo, PhotoUploader
 

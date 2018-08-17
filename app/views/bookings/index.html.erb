@@ -297,7 +297,7 @@
             </div>
             <div class="card-footer links">
               <%= link_to 'Reject Plea', accept_booking_path(booking), class: 'btn btn-sm btn-green' %>
-              <%= link_to 'Demand Answers', "#", class: 'btn btn-sm btn-orange' %>
+              <%= link_to 'Demand Answers', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post,  class: 'btn btn-sm btn-orange' %>
               <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
               <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "Are you sure you want to let this coward forsake his commitment?" } %>
             </div>

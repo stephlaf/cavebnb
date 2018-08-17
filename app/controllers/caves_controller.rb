@@ -3,7 +3,16 @@ class CavesController < ApplicationController
    skip_before_action :authenticate_user!, only: :index
 
   def index
-    @caves =  Cave.all
+    # raise
+    if params[:query].present?
+      @caves = Cave.global_search(params[:query])
+      # raise
+      unless @caves == []
+        render :search
+      end
+    else
+      @caves =  Cave.all
+    end
   end
 
   # def top

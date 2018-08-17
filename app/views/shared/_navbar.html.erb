@@ -8,6 +8,12 @@
     <%= link_to "CaveBnB", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
   </div>
 
+  <form action="/caves" autocomplete="off">
+    <input type="text" name='query' class="search-style">
+    <input type="submit" value="hunt!" class="btn btn-warning">
+  </form>
+
+
 
 
   <!-- Right Navigation -->
@@ -26,7 +32,7 @@
           <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to user_path(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>

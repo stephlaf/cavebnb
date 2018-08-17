@@ -1,7 +1,7 @@
 class Cave < ApplicationRecord
   belongs_to :user
   has_many :bookings
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :users, through: :bookings
   has_many :cave_amenities, dependent: :destroy
   has_many :amenities, through: :cave_amenities

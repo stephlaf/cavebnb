@@ -97,23 +97,31 @@
       </div>
     </div>
   </div>
+
   <%= form_for([@cave, @review]) do |f| %>
-
+    <br>
+    <h3> Leave a review for this cave </h3>
+    <br>
+    <p> *Required Field </p>
     <div id="user_stars"><%= f.number_field :stars, required: true, in: (1..5), rows: 3, class: "form-control" %></div>
-
+    <br>
+    <p> *Required Field </p>
     <div class="form-group">
       <%= f.text_area :comment, required: true, rows: 3, class: "form-control" %>
     </div>
 
 
     <div class="actions">
-      <%= f.submit "Create Review", class: "btn btn-primary" %>
+      <%= f.submit "Submit Review", class: "btn btn-primary" %>
+      <br>
     </div>
 
   <% end %>
  <% if @cave.reviews.any? %>
  <% @cave.reviews.each do |review| %>
  <div>
+  <br>
+  <br>
   <p> Rating: <%= review.stars %> stars out of 5 </p>
   <p><%= review.comment %></p>
  </div>

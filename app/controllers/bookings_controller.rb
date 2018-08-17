@@ -21,11 +21,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.cave = @cave
     @booking.user = current_user
+    @booking.status = "proposed"
 
     if @booking.save
       redirect_to bookings_path
     else
-      redirect_to cave_path(@cave)
+    redirect_to cave_path(@cave)
     end
   end
 
@@ -42,8 +43,13 @@ class BookingsController < ApplicationController
 
   def destroy
     @cave = @booking.cave
-    @booking.destroy
-    redirect_to cave_path(@cave)
+    if @booking.user == current_user
+      @booking.status = "cancelrequested"
+      @booking.save
+    else
+      @booking.destroy
+    end
+    redirect_to bookings_path
   end
 
   private

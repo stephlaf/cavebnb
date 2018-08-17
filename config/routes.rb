@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create]
     resources :reviews, only: [:create]
   end
+
+
   resources :bookings, except: [ :new, :create]
+  resources :users, only: [:show]
 
   resources :conversations, only: [:index, :new, :create] do
     resources :messages, only: [:index, :create]

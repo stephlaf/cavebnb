@@ -6,13 +6,13 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-1">
         <div class="header-cave-details">
-          <div class="header-cave-owner  text-center">
+          <div class="header-cave-owner text-center">
             <% if @cave.user.photo %>
               <img src="<%= @cave.user.photo %>" class="avatar-large" alt="<%= @cave.user.first_name %> <%= @cave.user.last_name %>" />
             <% end %>
             <p class="header-cave-owner"><%= @cave.user.first_name %> <%= @cave.user.last_name %></p>
           </div>
-          <div class="header-cave-name">
+          <div class="header-cave">
             <h1><%= @cave.name %></h1>
             <p class="cave-data"><i><%= @cave.address %></i></p>
             <p class="cave-data"><%= @cave.price %> rocks per night</p>

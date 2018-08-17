@@ -1,0 +1,11 @@
+ratingSelect = document.querySelector("#rating-select");
+
+document.getElementById('index').scrollIntoView();
+
+var cavesContainer = document.getElementById('js-caves');
+
+cavesContainer.innerHTML = "";
+
+<% @caves.each do |cave| %>
+  cavesContainer.insertAdjacentHTML("afterbegin", "<%= j(render partial: 'shared/cave_card', locals: {cave: cave}) %>");
+<% end %>

@@ -16,7 +16,8 @@ class CavesController < ApplicationController
 
     if params[:rating].present?
       # raise
-      @caves.where(rating: params[:rating])
+      puts params[:rating]
+      @caves = @caves.where(rating: params[:rating])
     end
   end
 

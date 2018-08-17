@@ -8,12 +8,21 @@
     <%= link_to "CaveBnB", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
   </div>
 
-  <form action="/caves" autocomplete="off" data-remote="true">
+  <form id="search-form" action="/caves" autocomplete="off" data-remote="true">
     <input type="text" name='query' class="search-style">
+    
+    <select name="rating" form="search-form">
+      <option disabled selected value>Rating</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
     <input type="submit" value="hunt!" class="btn btn-warning">
+
   </form>
-
-
 
 
   <!-- Right Navigation -->

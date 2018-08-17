@@ -6,6 +6,10 @@ var cavesContainer = document.getElementById('js-caves');
 
 cavesContainer.innerHTML = "";
 
+<% if @caves.empty? %>
+  cavesContainer.insertAdjacentHTML("afterbegin", "<h2> No caves match your search</h2>");
+<% end %>
+
 <% @caves.each do |cave| %>
   cavesContainer.insertAdjacentHTML("afterbegin", "<%= j(render partial: 'shared/cave_card', locals: {cave: cave}) %>");
 <% end %>

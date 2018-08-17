@@ -1,13 +1,12 @@
 <%= render 'shared/banner' %>
 
 <div class="container text-center container-size">
-  <!-- <div id="index"></div> -->
   <h1 id="index" class="index-h1">Our Selection of Caves</h1>
 
-    <div class="row" id="js-caves">
-        <% @caves.each do |cave| %>
-          <%= render partial: 'shared/cave_card', locals: {cave: cave} %>
-        <% end %>
-    </div>
+      <div class="row" id="js-caves">
+          <% @caves.each do |cave| %>
+            <%= render partial: 'shared/cave_card', locals: {cave: cave} %>
+          <% end %>
+      </div>
 
 </div>

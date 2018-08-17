@@ -1,38 +1,62 @@
-<h1>Your Bookings (as Renter) </h1>
-<!--renter -->
-  <% @sent_bookings.each do |booking| %>
-    <div display: inline-block>
-      <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
-      <span><%= link_to 'Cave Details', cave_path(booking.cave.id), class: 'btn btn-info' %></span>
-    <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
-      <span><%= link_to 'Delete', booking_path(booking), class: 'btn btn-danger',  method: :delete,
-                             data: { confirm: 'Are you sure?' } %></span>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h2 class="text-center">Your Upcoming Invasions</h2>
+      <% @sent_bookings.each do |booking| %>
+        <% cave = booking.cave %>
+        <div class="card">
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= booking.cave.photo %>);">
+            <div class="card-category">
+              <h3 class="card-title"><%= cave.name %></h3>
+              <p>A <%= cave.cave_type.name %> of <%= cave.user.first_name %> <%= cave.user.last_name %></p>
+              <p><% @rating = cave.rating.to_i %>
+                <% @rating.times do %>
+                  <i class="fa fa-star" style= "color: orange;"></i>
+                <% end %>
+                <%  if @rating < 5
+                  meh_num = 5 - @rating
+                  meh_num.times do
+                  %>
+                    <i class="fa fa-star" style="color: grey;"></i>
+                  <% end %>
+                <% end %>
+              </p>
+            </div>
+            <a href="/users/<%= cave.user_id %>"><img class="avatar-bottom" src="<%= cave.user.photo %>"></a>
+          </div>
+          <div class="card-footer links">
+            <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
+            <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+            <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+            <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will ask #{booking.cave.user.first_name} #{booking.cave.user.last_name} to destroy it." } %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div>
-      <h3><%= booking.cave.name %></h3>
-      <p>Check-in date: <%= booking.checkin %></p>
-      <p>Check-out date: <%= booking.checkout %></p>
-      <!-- <p>Reservation Status: <%= booking.status%></p> -->
-     </div>
-  <% end %>
-
-<!-- owner -->
-
-<h1>Your Bookings (as Owner)</h1>
-<% @received_bookings.each do |booking| %>
-  <div>
-    <%= cl_image_tag booking.cave.photo, height: 150, width: 150, crop: :thumb %>
-    <span><%= link_to 'Get Details', booking_path(booking), class: 'btn btn-info' %></span>
-  <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
-    <span><%= link_to 'Delete', booking_path(booking), class: 'btn btn-danger',  method: :delete,
-                           data: { confirm: 'Are you sure?' } %></span>
+     <div class="col-sm-12 col-md-6">
+      <h2 class="text-center">Your Impending Hordes (of Renters)</h2>
+      <% @received_bookings.each do |booking| %>
+        <% cave = booking.cave %>
+        <% user = booking.user %>
+        <div class="card">
+          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url(<%= user.photo %>);">
+            <div class="card-category">
+              <h3 class="card-title"><%= user.first_name %> <%= user.last_name %></h3>
+              <p>Invading <%= cave.name %> (Your <%= cave.cave_type.name %>)</p>
+            </div>
+            <div class="card-description">
+              <h2>Invading: <%= booking.checkin.strftime("%A, %B %d") %></h2>
+              <h2>Fleeing: <%= booking.checkout.strftime("%A, %B %d") %></h2>
+            </div>
+          </div>
+          <div class="card-footer links">
+            <%= link_to 'Explore Cave', cave_path(booking.cave.id), class: 'btn btn-sm btn-green' %>
+            <%= link_to 'Send Smoke Signal', "#", class: 'btn btn-sm btn-orange' %>
+            <!-- <span><%#link_to 'Edit', edit_path(booking), class: 'btn btn-treehouse' %></span> -->
+            <%= link_to 'Destroy!', booking_path(booking), class: 'btn btn-sm btn-red',  method: :delete, data: { confirm: "This booking is carved in stone, but the Great Controller will allow you to destroy it, if you really want to." } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-      <div>
-      <h3><%= booking.cave.name %></h3>
-      <p>Check-in date: <%= booking.checkin %></p>
-      <p>Check-out date: <%= booking.checkout %></p>
-      <!-- <p>Reservation Status: <%= booking.status%></p> -->
-     </div>
-<% end %>
-
+</div>
